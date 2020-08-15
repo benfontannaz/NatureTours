@@ -35,9 +35,24 @@
         &::after {
             background-color: $color-white;
         }
+
     }
 
     &--white-animated {
+        animation: moveInBottom 1s ease-in-out .25s; // .75s here indicates the start delay of the animation
+        animation-fill-mode: backwards; // set the opacity to zero prior the animation starts with a delay when configured
+    }
+
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+
+        &::after {
+            background-color: $color-primary;
+        }
+    }
+
+    &--green-animated {
         animation: moveInBottom 1s ease-in-out .25s; // .75s here indicates the start delay of the animation
         animation-fill-mode: backwards; // set the opacity to zero prior the animation starts with a delay when configured
     }
