@@ -1,6 +1,7 @@
 /*  button configuration ---------------------------------------------- */
 
 .btn {
+    &,
     &:link,
     &:visited {
         text-transform: uppercase;
@@ -11,6 +12,10 @@
         transition: all .2s;
         position: relative; // must be configured here for the btn::after position: absolute; configuration to work
         font-size: $default-font-size;
+
+        // Change for the <button> element
+        border: none;
+        cursor: pointer;
     }
 
     &:hover {
@@ -23,7 +28,9 @@
         }
     }
 
-    &:active {
+    &:active,
+    &:focus {
+        outline: none;
         transform: translateY(-.1rem);
         box-shadow: .5rem .5rem 1rem rgba($color-black, .3);
     }
@@ -73,7 +80,6 @@
 
 }
 
-
 .btn-text {
     &:link,
     &:visited {
@@ -84,6 +90,8 @@
         // border-bottom: 0.1rem solid $color-primary;
         padding: 0.3rem;
         transition: all .2s;
+        padding: 1rem;
+        border-radius: 0.3rem;
     }
 
     &:hover {
@@ -98,5 +106,3 @@
         transform: translateY(-0.1rem);
     }
 }
-
-
