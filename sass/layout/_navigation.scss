@@ -6,8 +6,8 @@
 
     &__button {
         background-color: $color-white;
-        height: 7rem;
-        width: 7rem;
+        height: 4.5rem;
+        width: 4.5rem;
         position: fixed;
         top: 6rem;
         right: 6rem;
@@ -18,19 +18,38 @@
         cursor: pointer;
         // backface-visibility: hidden;  // fixes glitch at the end of the animation
         
+        @include respond(tab-port) {    // width < 900?
+            top: 3rem;
+            right: 3rem;
+        }
+
+        @include respond(phone) {    // width < 900?
+            top: 2rem;
+            right: 2rem;
+        }
     }
 
     &__background {
-        height: 6rem;
-        width: 6rem;
+        height: 4.5rem;
+        width: 4.5rem;
         border-radius: 50%;
         position: fixed;
-        top: 6.5rem;
-        right: 6.5rem;
+        top: 6rem;
+        right: 6rem;
         background-image: radial-gradient($color-primary-light, $color-primary-dark);
         z-index: 1000;
 
         transition: transform .7s cubic-bezier(0.86, 0, 0.07, 1);
+
+        @include respond(tab-port) {    // width < 900?
+            top: 3rem;
+            right: 3rem;
+        }
+
+        @include respond(phone) {    // width < 900?
+            top: 2rem;
+            right: 2rem;
+        }
     }
 
     &__nav {
@@ -110,13 +129,13 @@
     // ICON
     &__icon {
         position: relative;
-        margin-top: 3.4rem;
+        margin-top: 2.2rem;
         
 
         &,
         &::before,
         &::after {
-            width: 3rem;
+            width: 2.5rem;
             height: 2px;
             background-color: $color-grey-dark-3;
             display: inline-block;

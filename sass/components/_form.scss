@@ -1,5 +1,9 @@
 .form {
     
+    // &__group {
+    //     display: block;
+    // }
+
     &__group:not(:last-child) {
         margin-bottom: 1.7rem;
     }
@@ -16,6 +20,10 @@
         width: 90%;
         display: block;
         transition: all .3s;
+
+        @include respond(tab-port) {    // width < 900?
+            width: 100%;
+        }
 
 
         &:focus {
@@ -52,6 +60,12 @@
     &__radio-group {
         float: left; // using float left as the option "display: inline-block;" was not working 
         width:40%;
+
+        @include respond(tab-port) {    // width < 900?
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
     }
 
     &__radio-input {
@@ -94,6 +108,21 @@
 
     &__radio-input:checked ~ &__radio-label &__radio-button::after {
         opacity: 1;
+    }
+
+    & .btn {
+        margin: 1rem 0 1rem 0;
+
+        @include respond(tab-port) {    // width < 900?
+            margin: 2rem 0 1rem 0;
+    
+        }
+
+        @include respond(big-desk) {    // width < 900?
+            margin: 2rem 0 2rem 0;
+    
+        }
+
     }
 
 }

@@ -24,9 +24,9 @@
 
 */
 
-@mixin respond-phone {
-    @media (max-width: 600px) { @content };
-}
+// @mixin respond-phone {
+//     @media (max-width: 37.5em) { @content };
+// }
 
 
 /*
@@ -36,27 +36,28 @@ $breakpoint argument choices:
 - tab-land      1200px  =   75em
 - big-desk      1800px  =   112.5em
 
-"em" measurement unit have been indicated by experts as the best to use for media queries
-1em = 16px 
-600px 
+"em" measurement unit have been indicated by experts as the best to use for media queries as Safari does not support px in media queries properly
+-> 1em = 16px or px / 16 = em
+
+ORDER:  01 Base + Typography > 02 General Layout + Grid > 03 Page Layout > 04 Components
 
 */
 
 @mixin respond($breakpoint) {
     @if $breakpoint == phone {
-        @media (max-width: 37.5em) { @content };
+        @media only screen and (max-width: 37.5em) { @content };
     }
 
     @if $breakpoint == tab-port {
-        @media (max-width: 56.25em) { @content };
+        @media only screen and (max-width: 56.25em) { @content };
     }
 
     @if $breakpoint == tab-land {
-        @media (max-width: 75em) { @content };
+        @media only screen and (max-width: 75em) { @content };
     }
 
     @if $breakpoint == big-desk {
-        @media (min-width: 112.5em) { @content };
+        @media only screen and (min-width: 112.5em) { @content };
     }
 
 }

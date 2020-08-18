@@ -3,19 +3,27 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
+        <!-- fonts -->
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+
+        <!-- Scripts -->
+        <!-- jQuery required by the script used to close the navigation button when clicking on a link  -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        
+        <!-- link CSS Stylesheet + Shortcut Icon-->
         <link rel="stylesheet" href="./css/icon-linea-fonts.css">
         <link rel="stylesheet" href="./css/style.css">
         <link rel="shortcut icon" type="image/png" href="./img/favicon.png">
                
         <title>Natours | Exciting tours for adventurous people</title>
+        
     </head>
     <body>
 
         <!-- 
         NAVIGATION ---------------------------------------------------------- -->
-        <div class="navivation">
+        <div class="navigation" id="navigation">
             <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
             <label for="navi-toggle" class="navigation__button">
                 <span class="navigation__icon">&nbsp;</span>
@@ -23,11 +31,11 @@
             <div class="navigation__background">&nbsp;</div>
             <nav class="navigation__nav">
                 <ul class="navigation__list">
-                    <li class="navigation__item"><a href="#" class="navigation__link"><span>01</span>About Natours</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link"><span>02</span>Your Benefits</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link"><span>03</span>Popular Tours</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link"><span>04</span>Stories</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link"><span>05</span>Book Now</a></li>
+                    <li class="navigation__item"><a href="#section-about" class="navigation__link"><span>01</span>About Natours</a></li>
+                    <li class="navigation__item"><a href="#section-features" class="navigation__link"><span>02</span>Your Benefits</a></li>
+                    <li class="navigation__item"><a href="#section-tours" class="navigation__link"><span>03</span>Popular Tours</a></li>
+                    <li class="navigation__item"><a href="#section-stories" class="navigation__link"><span>04</span>Stories</a></li>
+                    <li class="navigation__item"><a href="#section-book" class="navigation__link"><span>05</span>Book Now</a></li>
                 </ul>
             </nav>
         </div>
@@ -54,7 +62,7 @@
 
             <!-- 
             SECTION ABOUT --------------------------------------------- -->
-            <section class="section-about">
+            <section class="section-about" id="section-about">
                 <div class="u-center-text u-margin-bottom-big">
                     <h2 class="heading-secondary">
                         Exiting tours for adventurous people
@@ -82,9 +90,20 @@
                     </div>
                     <div class="col-1-of-2">
                         <div class="composition">
-                            <img src="./img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
+                            <!-- Media queries should be expressed in "em" and NOT "px" as Safari does not support px -->
+                            <!-- px / 16 = em -->
+                            <img srcset="./img/nat-1.jpg 300w, ./img/nat-1-large.jpg 1000w" 
+                                 sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px" alt="Photo 1" class="composition__photo composition__photo--p1" src="./img/nat-1-large.jpg">
+                            
+                            <img srcset="./img/nat-2.jpg 300w, ./img/nat-2-large.jpg 1000w" 
+                                 sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px" alt="Photo 2" class="composition__photo composition__photo--p2" src="./img/nat-2-large.jpg">
+
+                            <img srcset="./img/nat-3.jpg 300w, ./img/nat-3-large.jpg 1000w" 
+                                 sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px" alt="Photo 3" class="composition__photo composition__photo--p3" src="./img/nat-3-large.jpg">
+
+                            <!-- <img src="./img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
                             <img src="./img/nat-2-large.jpg" alt="Photo 2" class="composition__photo composition__photo--p2">
-                            <img src="./img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+                            <img src="./img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3"> -->
                         </div>
                     </div>
                 </div>
@@ -92,7 +111,7 @@
 
             <!-- 
             SECTION FEATURES --------------------------------------------- -->
-            <section class="section-features">
+            <section class="section-features" id="section-features">
                 
                 <div class="row">
                     <div class="col-1-of-4">
@@ -244,7 +263,7 @@
 
             <!-- 
             SECTION STORIES --------------------------------------------- -->
-            <section class="section-stories">
+            <section class="section-stories" id="section-stories">
 
                 <div class="bg-video">
                     <video class="bg-video__content" autoplay muted loop>
@@ -298,7 +317,7 @@
 
             <!-- 
             SECTION BOOK --------------------------------------------- -->
-            <section class="section-book">
+            <section class="section-book" id="section-book">
                 <div class="row">
                     <div class="book">
                         <div class="book__form">
@@ -322,6 +341,7 @@
                                 </div>
 
                                 <div class="form__group u-margin-bottom-big">
+
                                     <div class="form__radio-group">
                                         <input type="radio" class="form__radio-input" id="small" name="size">
                                         <label for="small" class="form__radio-label">
@@ -337,10 +357,14 @@
                                     </div>
                                 </div>
 
-                                <div class="form__group">
-                                    <!-- real button element required as it will be required to send the form element captured -->
-                                    <button class="btn btn--green">Next step &rarr;</button> 
-                                </div>
+
+                                <!-- BUTTON margins not working if placed into a DIV element -->
+                                <!-- <div class="form__group">
+                                    <button class="btn btn--green">Next step &rarr;</button>
+                                </div> -->
+
+                                <!-- real button element required as it will be required to send the form element captured -->
+                                <button class="btn btn--green">Next step &rarr;</button>
                             </form>
                         </div>
                     </div>
@@ -353,7 +377,12 @@
         FOOTER --------------------------------------------- -->
         <footer class="footer">
             <div class="footer__logo-box">
-                <img src="./img/logo-green-2x.png" alt="Full logo" class="footer__logo">
+
+                <picture class="footer__logo">
+                    <source srcset="./img/logo-green-small-1x.png 1x, ./img/logo-green-small-2x.png 2x" media="(max-width: 37.5em)">
+                    <img srcset="./img/logo-green-1x.png 1x, ./img/logo-green-2x.png 2x" alt="Full logo" src="./img/logo-green-2x.png">
+                </picture>
+
             </div>
             <div class="row">
                 <div class="col-1-of-2">
@@ -391,7 +420,7 @@
                     <p class="popup__text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. A alias voluptates quo adipisci iste ad ipsum neque itaque deserunt laboriosam aperiam doloribus aspernatur consequuntur voluptatem, ipsam saepe at ipsa eligendi unde, repellat commodi quos voluptatum debitis soluta. Ipsam provident aut dolores pariatur ea ullam nisi!
                     </p>
-                    <a href="#" class="btn btn--green">Book now</a>
+                    <a href="#" class="btn btn--green u-margin-top-medium">Book now</a>
                 </div>
             </div>
         </div>
@@ -465,7 +494,11 @@
             </div>
         </section> -->
 
+        <!-- 
+        Scripts ---------------------------------------------------------- -->
+        <script src="./js/scripts.js"></script>
         
     </body>
+    
 </html>
 
